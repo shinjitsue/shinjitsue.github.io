@@ -28,17 +28,6 @@
   };
 
   /**
-   * Scrolls to an element with header offset
-   
-  const scrollto = (el) => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-  */
-
-  /**
    * Preloader
    */
   const preloader = select("#preloader");
@@ -53,3 +42,47 @@
     });
   }
 })();
+
+$(document).ready(function () {
+  // Function to show the selected section and hide others
+  function showSection(sectionId) {
+    const parentContainer = $(".rightpart");
+
+    // Hide overflow to prevent scroll bar during animation
+    parentContainer.css("overflow", "hidden");
+
+    $(".rightpart > div")
+      .removeClass("visible-section fade-in-up")
+      .addClass("hidden-section"); // Hide all sections
+    $(sectionId)
+      .removeClass("hidden-section")
+      .addClass("visible-section fade-in-up"); // Show the selected section with animation
+
+    // Remove the animation class and restore overflow after the animation completes
+    setTimeout(() => {
+      $(sectionId).removeClass("fade-in-up");
+      parentContainer.css("overflow", ""); // Restore overflow
+    }, 500); // Match the duration of the animation
+  }
+
+  // Set default active state
+  $(".menu ul li:first-child a").addClass("active");
+  showSection("#home");
+
+  // Click event for menu items
+  $(".menu ul li a").on("click", function (e) {
+    e.preventDefault(); // Prevent default anchor behavior
+
+    // Remove active class from all menu items
+    $(".menu ul li a").removeClass("active");
+
+    // Add active class to the clicked menu item
+    $(this).addClass("active");
+
+    // Get the href attribute of the clicked menu item
+    const sectionId = $(this).attr("href");
+
+    // Show the corresponding section
+    showSection(sectionId);
+  });
+});
