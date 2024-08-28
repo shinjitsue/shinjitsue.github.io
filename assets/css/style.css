@@ -9,6 +9,15 @@ body {
   position: relative;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: mulish;
+}
+
 a {
   color: #adadad;
   text-decoration: none;
@@ -19,21 +28,12 @@ a:hover {
   text-decoration: none;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: mulish;
+.active {
+  color: #fff;
 }
 
-.wrap {
-  width: 100%;
-  height: auto;
-  clear: both;
-  float: left;
-  position: relative;
+.grey {
+  color: #adadad;
 }
 
 .leftpart {
@@ -50,7 +50,7 @@ h6 {
   padding-left: 22px;
 }
 
-.leftpart .logo img{
+.leftpart .logo img {
   height: 40px;
 }
 
@@ -76,13 +76,27 @@ h6 {
   color: #fff;
 }
 
+.hidden-section {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  visibility: hidden;
+}
 
-/* @media (max-width: 1600px) {
-  .wrap.leftpart {
-    width: 350px;
-    padding: 0 70px;
+.fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-} */
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /*--------------------------------------------------------------
 # Preloader
@@ -231,13 +245,13 @@ h6 {
   box-shadow: inset 0 0 0 9px rgba(255, 255, 255, 0.3);
 }
 
-#home .details h3{
+#home .details h3 {
   font-size: 48px;
   font-weight: 900;
   text-transform: uppercase;
 }
 
-#home .social_links a{
+#home .social_links a {
   font-size: 18px;
   display: flex;
   justify-content: center;
@@ -255,8 +269,8 @@ h6 {
   /* border: 1px solid rgba(255, 255, 255, 0.04); */
 }
 
-#home .social_links a::before{
-  content: '';
+#home .social_links a::before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -264,17 +278,17 @@ h6 {
   height: 100%;
   border-radius: 50%;
   background: #ffffff00;
-  transition: .5s;
-  transform: scale(.9);
+  transition: 0.5s;
+  transform: scale(0.9);
   z-index: -1;
 }
 
-#home .social_links a:hover::before{
+#home .social_links a:hover::before {
   transform: scale(1.1);
   box-shadow: 0 0 15px #fff;
 }
 
-#home .social_links a:hover{
+#home .social_links a:hover {
   color: #fff;
   box-shadow: 0 0 5px #fff;
   text-shadow: 0 0 5px #fff;
@@ -282,14 +296,14 @@ h6 {
 
 @keyframes morph {
   0% {
-      border-radius: 60% 40% 30% 70%/60% 30% 70% 40%
+    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
   }
 
   50% {
-      border-radius: 30% 60% 70% 40%/50% 60% 30% 60%
+    border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
   }
 
   100% {
-      border-radius: 60% 40% 30% 70%/60% 30% 70% 40%
+    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
   }
 }
