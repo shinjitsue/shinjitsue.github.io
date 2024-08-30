@@ -36,7 +36,11 @@ a:hover {
   color: #adadad;
 }
 
-.leftpart {
+.nav-bg {
+  background-color: #3d3d3d;
+}
+
+.sidebar {
   background-color: #3d3d3d;
   width: 350px;
   height: 100vh;
@@ -46,27 +50,54 @@ a:hover {
   z-index: 1;
 }
 
-.leftpart .logo {
+.sidebar .logo {
   padding-left: 22px;
 }
 
-.leftpart .logo img {
+.sidebar .logo img {
   height: 40px;
 }
 
-.leftpart .menu ul li {
+.sidebar .menu ul li {
   list-style-type: none;
   color: inherit;
   font-weight: 500;
   transition: all 0.3s ease;
 }
 
-.leftpart .copyright {
+.sidebar .copyright {
   color: #adadad;
   font-family: mulish;
 }
 
-.rightpart {
+.navbar .menu ul li {
+  list-style-type: none;
+  color: inherit;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.offcanvas-header h5 {
+  color: #fff !important;
+  font-family: mulish;
+}
+
+.offcanvas-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu {
+  flex-grow: 1;
+}
+
+.footer_copyright {
+  margin-top: auto;
+  padding-top: 1rem; /* Optional: Add some padding for better spacing */
+}
+
+.main-content {
   background-color: #2e2e2e;
   width: 100%;
   min-height: 100vh;
@@ -95,6 +126,42 @@ a:hover {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Hide sidebar on smaller screens */
+@media (max-width: 992px) {
+  .sidebar {
+    display: none;
+  }
+  .main-content {
+    width: 100%;
+    padding-left: 0 !important;
+  }
+}
+
+/* Adjust main-content for larger screens */
+@media (min-width: 992px) {
+  .main-content {
+    padding-left: 350px !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# Navbar
+--------------------------------------------------------------*/
+
+/* Styles for tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  .navbar-brand img {
+    height: 30px;
+  }
+}
+
+/* Styles for mobile devices (max-width: 576px) */
+@media (max-width: 576px) {
+  .navbar-brand img {
+    height: 25px;
   }
 }
 
@@ -227,7 +294,7 @@ a:hover {
 #home .avatar {
   position: relative;
   border-radius: 100%;
-  min-height: 250px;
+  min-height: 300px;
 }
 
 #home .avatar .image {
@@ -236,7 +303,7 @@ a:hover {
   bottom: 0;
   left: 0;
   right: 0;
-  /* background-position: center; */
+  background-position: center;
   background-repeat: no-repeat;
   z-index: 1;
   background-size: cover;
@@ -245,7 +312,7 @@ a:hover {
   box-shadow: inset 0 0 0 9px rgba(255, 255, 255, 0.3);
 }
 
-#home .details h3 {
+#home .name h3 {
   font-size: 48px;
   font-weight: 900;
   text-transform: uppercase;
@@ -306,4 +373,82 @@ a:hover {
   100% {
     border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
   }
+}
+
+/* Styles for tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  #home .name h3 {
+    font-size: 34px;
+  }
+
+  #home .bio {
+    font-size: 14px;
+  }
+
+  #home .social_links a {
+    font-size: 16px;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Styles for mobile devices (max-width: 576px) */
+@media (max-width: 576px) {
+  .name h3 {
+    font-size: 28px;
+  }
+
+  .bio {
+    font-size: 12px;
+  }
+
+  .name,
+  .bio,
+  .social_links {
+    text-align: center;
+  }
+
+  .social_links {
+    justify-content: center;
+  }
+
+  .social_links a {
+    font-size: 14px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/*--------------------------------------------------------------
+# About
+--------------------------------------------------------------*/
+
+#about .about_body {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+  padding: 100px 0;
+}
+
+#about .title span {
+  background-color: #3d3d3d;
+  color: #adadad;
+  display: inline-block;
+  text-transform: uppercase;
+  padding: 10px 10px;
+  font-size: 12px;
+  font-family: montserrat;
+  letter-spacing: 0;
+  margin-bottom: 12px;
+}
+
+#about .title h2 {
+  font-weight: 900;
+}
+
+#about .avatar {
+  position: relative;
+  border-radius: 100%;
+  min-height: 300px;
 }

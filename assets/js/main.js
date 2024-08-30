@@ -46,12 +46,12 @@
 $(document).ready(function () {
   // Function to show the selected section and hide others
   function showSection(sectionId) {
-    const parentContainer = $(".rightpart");
+    const parentContainer = $(".main-content");
 
     // Hide overflow to prevent scroll bar during animation
     parentContainer.css("overflow", "hidden");
 
-    $(".rightpart > div")
+    $(".main-content > div")
       .removeClass("visible-section fade-in-up")
       .addClass("hidden-section"); // Hide all sections
     $(sectionId)
