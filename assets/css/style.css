@@ -18,6 +18,10 @@ div.container.resume {
   max-width: 900px;
 }
 
+div.container.contact {
+  max-width: 850px;
+}
+
 h1,
 h2,
 h3,
@@ -166,6 +170,57 @@ a:hover {
   filter: invert(1); /* Invert the close button color */
 }
 
+.mouse-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  visibility: hidden;
+}
+
+.cursor-inner {
+  margin-left: -3px;
+  margin-top: -3px;
+  width: 6px;
+  height: 6px;
+  z-index: 50;
+  background-color: #adadad;
+  -webkit-transition: width 0.3s ease-in-out, height 0.3s ease-in-out,
+    margin 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out, height 0.3s ease-in-out,
+    margin 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.cursor-inner.cursor-hover {
+  margin-left: -20px;
+  margin-top: -20px;
+  width: 40px;
+  height: 40px;
+  background-color: #adadad;
+  opacity: 0.3;
+}
+
+.cursor-outer {
+  margin-left: -15px;
+  margin-top: -15px;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #adadad;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  z-index: 50;
+  opacity: 0.5;
+  -webkit-transition: all 0.08s ease-out;
+  transition: all 0.08s ease-out;
+}
+
+.cursor-outer.cursor-hover {
+  opacity: 0;
+}
+
 /* Custom scrollbar styles */
 ::-webkit-scrollbar {
   width: 8px; /* Width of the scrollbar */
@@ -223,6 +278,10 @@ a:hover {
 
   div.container.resume {
     max-width: 720px; /* Adjust this value as needed */
+  }
+
+  div.container.contact {
+    max-width: 700px; /* Adjust this value as needed */
   }
 }
 
@@ -473,25 +532,25 @@ a:hover {
 
 /* Styles for mobile devices (max-width: 576px) */
 @media (max-width: 576px) {
-  .name h3 {
+  #home .name h3 {
     font-size: 28px;
   }
 
-  .bio {
+  #home .bio {
     font-size: 12px;
   }
 
-  .name,
+  #home .name,
   .bio,
   .social_links {
     text-align: center;
   }
 
-  .social_links {
+  #home .social_links {
     justify-content: center;
   }
 
-  .social_links a {
+  #home .social_links a {
     font-size: 14px;
     width: 36px;
     height: 36px;
@@ -508,17 +567,6 @@ a:hover {
   clear: both;
   float: left;
   padding: 55px 0;
-  overflow: hidden; /* Hide overflow */
-  overflow-y: scroll; /* Allow vertical scrolling */
-}
-
-#about .about_body::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
-}
-
-#about .about_body {
-  -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
 }
 
 #about .section_title span {
@@ -652,6 +700,11 @@ a:hover {
   filter: none; /* Remove grayscale filter on hover */
 }
 
+#about .type1 .typed {
+  color: #b3ff00;
+  text-shadow: 0 0 5px #b3ff00;
+}
+
 @keyframes morph2 {
   0% {
     border-radius: 5% 5% 5% 5% / 5% 5% 5% 5%;
@@ -763,17 +816,6 @@ a:hover {
   clear: both;
   float: left;
   padding: 55px 0;
-  overflow: hidden; /* Hide overflow */
-  overflow-y: scroll; /* Allow vertical scrolling */
-}
-
-#resume .resume_body::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
-}
-
-#resume .resume_body {
-  -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
 }
 
 #resume .section_title span {
@@ -883,11 +925,7 @@ a:hover {
 #portfolio .top_container {
   width: 100%;
   height: auto;
-  clear: both;
-  float: left;
   padding: 55px 0 30px 0;
-  overflow: hidden;
-  overflow-y: scroll;
 }
 
 #portfolio .top_container::-webkit-scrollbar {
@@ -1197,5 +1235,107 @@ a:hover {
   #portfolio .icons img {
     width: 40px;
     height: 40px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Contact
+--------------------------------------------------------------*/
+
+#contact .top_container {
+  width: 100%;
+  height: auto;
+  padding: 55px 0 30px 0;
+}
+
+#contact .section_title span {
+  background-color: #3d3d3d;
+  color: #adadad;
+  display: inline-block;
+  text-transform: uppercase;
+  padding: 10px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: montserrat;
+  letter-spacing: 0;
+  margin-bottom: 12px;
+}
+
+#contact .section_title h2 {
+  font-weight: 900;
+}
+
+#contact .info-item {
+  background-color: #3d3d3d;
+  height: 150px;
+}
+
+#contact .info-item .icon {
+  color: #2e2e2e;
+  background-color: #fff;
+  width: 56px;
+  height: 56px;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+#contact .info-item h4 {
+  font-weight: 800;
+}
+
+#contact .info-item h4,
+.info-item p {
+  margin: 0;
+}
+
+#contact .social_links {
+  margin: 1px 0 0;
+  font-size: 20px;
+}
+
+#contact .info-item .icon.bi::before {
+  font-weight: 600 !important;
+}
+
+#contact .bi-geo-alt-fill,
+#contact .bi-telephone-fill,
+#contact .bi-envelope-fill,
+#contact .bi-share-fill {
+  transition: background-color 10s ease-in-out;
+}
+
+#contact .col-lg-6:hover .bi-geo-alt-fill,
+#contact .col-md-6:hover .bi-geo-alt-fill,
+#contact .col-lg-6:hover .bi-telephone-fill,
+#contact .col-md-6:hover .bi-telephone-fill,
+#contact .col-lg-6:hover .bi-envelope-fill,
+#contact .col-md-6:hover .bi-envelope-fill,
+#contact .col-lg-6:hover .bi-share-fill,
+#contact .col-md-6:hover .bi-share-fill {
+  background-color: #b3ff00;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #b3ff00;
+}
+
+#contact .info-item a:hover {
+  color: #b3ff00;
+}
+
+/* Styles for tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  #contact .top_container {
+    padding: 100px 0 40px 0;
+  }
+}
+
+/* Styles for mobile devices (max-width: 576px) */
+@media (max-width: 576px) {
+  #contact .top_container {
+    padding: 90px 0 45px 0;
   }
 }

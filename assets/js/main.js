@@ -43,6 +43,26 @@
   }
 
   /**
+   * Intro type effect
+   */
+  const about_typed = select(".type1 .typed");
+  if (about_typed) {
+    let typed_strings = about_typed.getAttribute("data-typed-items");
+    typed_strings = typed_strings.split(",");
+    new Typed(".type1 .typed", typedConfig(typed_strings));
+  }
+
+  function typedConfig(typed_strings) {
+    return {
+      strings: typed_strings,
+      loop: true,
+      typeSpeed: 100,
+      backSpeed: 50,
+      backDelay: 2000,
+    };
+  }
+
+  /**
    * Porfolio isotope and filter
    */
   window.addEventListener("load", () => {
@@ -129,6 +149,47 @@ $(document).ready(function () {
       parentContainer.css("overflow", ""); // Restore overflow
     }, 500); // Match the duration of the animation
   }
+
+  function cursor() {
+    "use strict";
+    var myCursor = jQuery(".mouse-cursor");
+    if (myCursor.length) {
+      if ($("body")) {
+        const e = document.querySelector(".cursor-inner"),
+          t = document.querySelector(".cursor-outer");
+        let n,
+          i = 0,
+          o = !1;
+
+        console.log("Cursor elements found:", e, t); // Debugging line
+
+        (window.onmousemove = function (s) {
+          o ||
+            (t.style.transform =
+              "translate(" + s.clientX + "px, " + s.clientY + "px)"),
+            (e.style.transform =
+              "translate(" + s.clientX + "px, " + s.clientY + "px)"),
+            (n = s.clientY),
+            (i = s.clientX);
+        }),
+          $("body").on("mouseenter", "a, .cursor-pointer", function () {
+            e.classList.add("cursor-hover"), t.classList.add("cursor-hover");
+          }),
+          $("body").on("mouseleave", "a, .cursor-pointer", function () {
+            ($(this).is("a") && $(this).closest(".cursor-pointer").length) ||
+              (e.classList.remove("cursor-hover"),
+              t.classList.remove("cursor-hover"));
+          }),
+          (e.style.visibility = "visible"),
+          (t.style.visibility = "visible");
+      }
+    } else {
+      console.log("Cursor elements not found"); // Debugging line
+    }
+  }
+
+  // Call the cursor function
+  cursor();
 
   // Set default active state
   $(".menu ul li:first-child a").addClass("active");
