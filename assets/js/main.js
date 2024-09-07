@@ -1,5 +1,6 @@
 (function () {
   "use strict";
+
   /**
    * Easy selector helper function
    */
@@ -45,16 +46,16 @@
   /**
    * Intro type effect
    */
-  const about_typed = select(".type1 .typed");
-  if (about_typed) {
-    let typed_strings = about_typed.getAttribute("data-typed-items");
-    typed_strings = typed_strings.split(",");
-    new Typed(".type1 .typed", typedConfig(typed_strings));
+  const aboutTyped = select(".type1 .typed");
+  if (aboutTyped) {
+    let typedStrings = aboutTyped.getAttribute("data-typed-items");
+    typedStrings = typedStrings.split(",");
+    new Typed(".type1 .typed", typedConfig(typedStrings));
   }
 
-  function typedConfig(typed_strings) {
+  function typedConfig(typedStrings) {
     return {
-      strings: typed_strings,
+      strings: typedStrings,
       loop: true,
       typeSpeed: 100,
       backSpeed: 50,
@@ -63,7 +64,7 @@
   }
 
   /**
-   * Porfolio isotope and filter
+   * Portfolio isotope and filter
    */
   window.addEventListener("load", () => {
     let portfolioContainer = select(".portfolio-container");
@@ -80,9 +81,9 @@
         "#portfolio-flters li",
         function (e) {
           e.preventDefault();
-          portfolioFilters.forEach(function (el) {
-            el.classList.remove("filter-active");
-          });
+          portfolioFilters.forEach((el) =>
+            el.classList.remove("filter-active")
+          );
           this.classList.add("filter-active");
 
           portfolioIsotope.arrange({
@@ -129,7 +130,9 @@
 })();
 
 $(document).ready(function () {
-  // Function to show the selected section and hide others
+  /**
+   * Function to show the selected section and hide others
+   */
   function showSection(sectionId) {
     const parentContainer = $(".main-content");
 
@@ -142,6 +145,123 @@ $(document).ready(function () {
     $(sectionId)
       .removeClass("hidden-section")
       .addClass("visible-section fade-in-up"); // Show the selected section with animation
+
+    // Toggle visibility of particles.js container
+    if (sectionId === "#home") {
+      $("#particles-js").show();
+      particlesJS("particles-js", {
+        particles: {
+          number: {
+            value: 80,
+            density: {
+              enable: true,
+              value_area: 800,
+            },
+          },
+          color: {
+            value: "#7a7a7a",
+          },
+          shape: {
+            type: "circle",
+            stroke: {
+              width: 0,
+              color: "#000000",
+            },
+            polygon: {
+              nb_sides: 5,
+            },
+            image: {
+              src: "img/github.svg",
+              width: 100,
+              height: 100,
+            },
+          },
+          opacity: {
+            value: 0.5,
+            random: false,
+            anim: {
+              enable: false,
+              speed: 1,
+              opacity_min: 0.1,
+              sync: false,
+            },
+          },
+          size: {
+            value: 3,
+            random: true,
+            anim: {
+              enable: false,
+              speed: 40,
+              size_min: 0.1,
+              sync: false,
+            },
+          },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#7a7a7a",
+            opacity: 0.4,
+            width: 1,
+          },
+          move: {
+            enable: true,
+            speed: 6,
+            direction: "none",
+            random: false,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+            attract: {
+              enable: false,
+              rotateX: 600,
+              rotateY: 1200,
+            },
+          },
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: {
+              enable: true,
+              mode: "repulse",
+            },
+            onclick: {
+              enable: true,
+              mode: "push",
+            },
+            resize: true,
+          },
+          modes: {
+            grab: {
+              distance: 400,
+              line_linked: {
+                opacity: 1,
+              },
+            },
+            bubble: {
+              distance: 400,
+              size: 40,
+              duration: 2,
+              opacity: 8,
+              speed: 3,
+            },
+            repulse: {
+              distance: 200,
+              duration: 0.4,
+            },
+            push: {
+              particles_nb: 4,
+            },
+            remove: {
+              particles_nb: 2,
+            },
+          },
+        },
+        retina_detect: true,
+      });
+    } else {
+      $("#particles-js").hide();
+    }
 
     // Remove the animation class and restore overflow after the animation completes
     setTimeout(() => {
@@ -160,8 +280,6 @@ $(document).ready(function () {
         let n,
           i = 0,
           o = !1;
-
-        console.log("Cursor elements found:", e, t); // Debugging line
 
         (window.onmousemove = function (s) {
           o ||

@@ -121,10 +121,19 @@ a:hover {
 }
 
 .hidden-section {
-  position: absolute;
-  top: -9999px;
-  left: -9999px;
   visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+  height: 0;
+  overflow: hidden;
+}
+
+.visible-section {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, opacity 0.5s linear;
+  height: auto;
+  overflow: visible;
 }
 
 .fade-in-up {
@@ -270,7 +279,7 @@ a:hover {
 }
 
 /* Styles for tablets (max-width: 768px) */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   /* Custom container max-width */
   div.container.about {
     max-width: 700px; /* Adjust this value as needed */
@@ -290,7 +299,7 @@ a:hover {
 --------------------------------------------------------------*/
 
 /* Styles for tablets (max-width: 768px) */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .navbar-brand img {
     height: 30px;
   }
@@ -415,6 +424,19 @@ a:hover {
 # Home
 --------------------------------------------------------------*/
 
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Ensure particles are behind content */
+  display: none; /* Hide particles by default */
+}
+#home {
+  position: relative;
+}
+
 #home .home_body {
   width: 100%;
   min-height: 100vh;
@@ -422,6 +444,7 @@ a:hover {
   align-items: center;
   justify-content: center;
   position: relative;
+  z-index: 1; /* Ensure content is above particles */
 }
 
 #home .row {
@@ -514,7 +537,7 @@ a:hover {
 }
 
 /* Styles for tablets (max-width: 768px) */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   #home .name h3 {
     font-size: 34px;
   }
@@ -728,7 +751,7 @@ a:hover {
 }
 
 /* Styles for tablets (max-width: 768px) */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   #about .about_body {
     padding: 100px 0 40px 0;
   }
@@ -905,7 +928,7 @@ a:hover {
 }
 
 /* Styles for tablets (max-width: 768px) */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   #resume .resume_body {
     padding: 100px 0 40px 0;
   }
@@ -1200,7 +1223,7 @@ a:hover {
 }
 
 /* Styles for tablets (max-width: 768px) */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   #portfolio .top_container {
     padding: 100px 0 40px 0;
   }
@@ -1327,7 +1350,7 @@ a:hover {
 }
 
 /* Styles for tablets (max-width: 768px) */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   #contact .top_container {
     padding: 100px 0 40px 0;
   }
