@@ -272,11 +272,11 @@ a:hover {
 }
 
 /* Adjust main-content for larger screens */
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
   .main-content {
     padding-left: 350px !important;
   }
-}
+} */
 
 /* Styles for tablets (max-width: 768px) */
 @media (max-width: 1024px) {
@@ -316,8 +316,27 @@ a:hover {
 # Preloader
 --------------------------------------------------------------*/
 
-#preloader {
+#word-preloader {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #2e2e2e;
+  z-index: 99999;
+  font-family: mulish;
+}
+
+#word-preloader .word-container {
+  font-size: 2rem;
+  color: #fff;
+}
+
+/* Existing Preloader Styles */
+#preloader {
+  display: none; /* Initially hidden */
   position: fixed;
   inset: 0;
   width: 100%;
@@ -412,7 +431,7 @@ a:hover {
 
 @keyframes preloaderfinish {
   0% {
-    width: 5 0%;
+    width: 50%;
   }
 
   100% {

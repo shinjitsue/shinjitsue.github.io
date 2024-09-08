@@ -29,19 +29,68 @@
   };
 
   /**
-   * Preloader
+   * Preloader with changing words
    */
-  const preloader = select("#preloader");
-  if (preloader) {
-    window.addEventListener("load", () => {
+  const words = [
+    "Welcome", // English
+    "Bienvenido", // Spanish
+    "Bienvenue", // French
+    "Willkommen", // German
+    "Benvenuto", // Italian
+    "欢迎", // Chinese (Simplified)
+    "ようこそ", // Japanese
+    "환영합니다", // Korean
+    "Maligayang pagdating", // Filipino
+    "Добро пожаловать", // Russian
+    "Bem-vindo", // Portuguese
+    "مرحبا", // Arabic
+    "Välkommen", // Swedish
+    "Welkom", // Dutch
+    "Tervetuloa", // Finnish
+    "Witamy", // Polish
+    "Velkommen", // Norwegian
+    "Swaagat hai", // Hindi
+    "Chào mừng", // Vietnamese
+    "Selamat datang", // Indonesian
+    "Croeso", // Welsh
+    "Karibu", // Swahili
+    "Hoş geldiniz", // Turkish
+    "خوش آمدید", // Persian
+    "flag{f4k3_f14g}",
+  ];
+
+  let wordIndex = 0;
+  const changingWordElement = document.getElementById("changing-word");
+  const welcomeDuration = 1000; // 1 second for "Welcome"
+  const otherDuration = 170; // 170ms for other words
+
+  function showNextWord() {
+    changingWordElement.textContent = words[wordIndex];
+    let duration =
+      words[wordIndex] === "Welcome" ? welcomeDuration : otherDuration;
+    wordIndex = (wordIndex + 1) % words.length;
+    setTimeout(showNextWord, duration);
+  }
+
+  function startPreloader() {
+    const wordPreloader = document.getElementById("word-preloader");
+    const preloader = document.getElementById("preloader");
+
+    showNextWord(); // Start the word changing
+
+    setTimeout(() => {
+      wordPreloader.style.display = "none";
+      preloader.style.display = "flex";
       setTimeout(() => {
         preloader.classList.add("loaded");
       }, 2000);
       setTimeout(() => {
         preloader.remove();
       }, 3000);
-    });
+    }, words.length * otherDuration + welcomeDuration - otherDuration); // Adjust total duration
   }
+
+  window.addEventListener("load", startPreloader);
 
   /**
    * Intro type effect
