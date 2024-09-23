@@ -1088,7 +1088,7 @@ a:hover {
   align-items: center;
 }
 
-.portfolio .portfolio-wrap .portfolio-info::before {
+/* .portfolio .portfolio-wrap .portfolio-info::before {
   display: block;
   content: "";
   width: 48px;
@@ -1114,16 +1114,16 @@ a:hover {
   border-right: 3px solid #b3ff00;
   transition: all 0.5s ease 0s;
   z-index: 9994;
-}
+} */
 
 .portfolio .portfolio-wrap .portfolio-info h4 {
-  font-size: 20px;
+  font-size: 24px;
   color: #fff;
   font-weight: 600;
 }
 
 .portfolio .portfolio-wrap .portfolio-info p {
-  color: #ffffff;
+  color: #d4d4d4;
   font-size: 14px;
   text-transform: uppercase;
   padding: 0;
@@ -1170,15 +1170,18 @@ a:hover {
 }
 
 /* Add zoom effect on hover for portfolio-wrap */
-.portfolio .portfolio-wrap:hover {
-  transform: scale(1.05); /* Adjust the scale value as needed */
-  transition: transform 0.3s ease-in-out; /* Smooth transition */
-}
+/* .portfolio .portfolio-wrap:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;=
+} */
 
 /* Add zoom effect on hover for the image inside portfolio-wrap */
+.portfolio .portfolio-wrap img {
+  transition: transform 0.4s ease-in-out, filter 0.4s ease-in-out; /* Smooth transition for both transform and filter */
+}
+
 .portfolio .portfolio-wrap:hover img {
-  transform: scale(1.1); /* Adjust the scale value as needed */
-  transition: transform 0.3s ease-in-out; /* Smooth transition */
+  transform: scale(1.06); /* Adjust the scale value as needed */
   filter: blur(2px); /* Add blur effect */
 }
 

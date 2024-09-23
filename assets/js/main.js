@@ -52,9 +52,6 @@
     "Swaagat hai", // Hindi
     "Chào mừng", // Vietnamese
     "Selamat datang", // Indonesian
-    "Croeso", // Welsh
-    "Karibu", // Swahili
-    "Hoş geldiniz", // Turkish
     "خوش آمدید", // Persian
     "flag{f4k3_f14g}",
   ];
@@ -62,7 +59,7 @@
   let wordIndex = 0;
   const changingWordElement = document.getElementById("changing-word");
   const welcomeDuration = 1000; // 1 second for "Welcome"
-  const otherDuration = 170; // 170ms for other words
+  const otherDuration = 100; // 170ms for other words
 
   function showNextWord() {
     changingWordElement.textContent = words[wordIndex];
