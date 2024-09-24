@@ -90,7 +90,7 @@ a:hover {
   transition: all 0.3s ease;
 }
 
-.offcanvas-header h5 {
+.offcanvas-header h3 {
   color: #fff !important;
   font-family: mulish;
 }
@@ -98,7 +98,8 @@ a:hover {
 .offcanvas-body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
 
 .menu {
@@ -303,12 +304,19 @@ a:hover {
   .navbar-brand img {
     height: 30px;
   }
+  .offcanvas {
+    --bs-offcanvas-width: 300px !important;
+  }
 }
 
 /* Styles for mobile devices (max-width: 576px) */
 @media (max-width: 576px) {
   .navbar-brand img {
     height: 25px;
+  }
+
+  .offcanvas {
+    --bs-offcanvas-width: 200px !important;
   }
 }
 

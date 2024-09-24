@@ -192,6 +192,9 @@ $(document).ready(function () {
       .removeClass("hidden-section")
       .addClass("visible-section fade-in-up"); // Show the selected section with animation
 
+    // Scroll to the top of the section
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
     // Toggle visibility of particles.js container
     if (sectionId === "#home") {
       $("#particles-js").show();
@@ -374,5 +377,36 @@ $(document).ready(function () {
 
     // Show the corresponding section
     showSection(sectionId);
+  });
+
+  // Click event for offcanvas menu items
+  $(".offcanvas-body .menu ul li a").on("click", function (e) {
+    e.preventDefault(); // Prevent default anchor behavior
+
+    // Remove active class from all menu items
+    $(".offcanvas-body .menu ul li a").removeClass("active");
+
+    // Add active class to the clicked menu item
+    $(this).addClass("active");
+
+    // Get the href attribute of the clicked menu item
+    const sectionId = $(this).attr("href");
+
+    // Show the corresponding section
+    showSection(sectionId);
+
+    // Close the offcanvas menu
+    const offcanvasElement = document.getElementById("offcanvasDark");
+    const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement);
+    offcanvasInstance.hide();
+
+    // Ensure the backdrop is removed and body overflow is restored
+    setTimeout(() => {
+      const backdrop = document.querySelector(".offcanvas-backdrop");
+      if (backdrop) {
+        backdrop.remove();
+      }
+      document.body.style.overflow = ""; // Restore body overflow
+    }, 300); // Delay to ensure the offcanvas is fully closed before removing the backdrop
   });
 });
